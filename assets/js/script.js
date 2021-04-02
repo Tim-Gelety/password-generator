@@ -1,35 +1,53 @@
 // Assignment code here
 var passwordPrompt = function () {
+
   // gets a value between 8-128 for variable passwordLength
   var passwordLength = window.prompt('How long of a password should I generate? tip: choose a number between 8-128.');
+ 
   // FIXED: stupid non-whole numbers exception
   var passwordLength = parseInt(passwordLength);
 
-  // START: if passwordLength is not a number between 8-128 recursive loop
-  // FIXED: letters being included EVEN though the forum guy said javascript is dumb and if you perform math on it it will expect intergers if you perform operations! never trust a forum post 
+  // FIXED: +1 edge case
   if (passwordLength > 7 && passwordLength < 129) {
 
-    //  buncha boolean logic
+    //  buncha boolean codesoup
     var passwordSpecial = window.confirm('Would you like special characters in your password? tip: OK for Yes and CANCEL for NO');
-    
+    if(passwordSpecial === true) {
+      passwordSpecial = "!@#$%^*&(){}|\<>?/.,`~";
+    } else {
+      passwordSpecial = ""
+    }
     var passwordNumber = window.confirm('Would you like numerical characters in your password? tip: OK for Yes and CANCEL for NO');
-
+if(passwordNumber === true) {
+  passwordNumber = "1234567890";
+} else {
+  passwordNumber = ""
+}
     var passwordLowerCase = window.confirm('Would you like lowercase characters in your password? tip: OK for Yes and CANCEL for NO');
-
+    if(passwordLowerCase === true) {
+      passwordLowerCase = "abcdefghijklmnopqrstuvwxyz";
+    } else {
+      passwordLowerCase = ""
+    }
     var passwordUpperCase = window.confirm('Would you like UPPERCASE characters in your password? tip: OK for Yes and CANCEL for NO');
-
-     //TODO: iterate on the value from the passwordLength
-
+    if(passwordUpperCase === true) {
+      passwordUpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    } else {
+      passwordUpperCase = ""
+    }  
+  var charSet = passwordSpecial + passwordNumber + passwordLowerCase + passwordUpperCase  
+console.log(charSet)
+// TODO: make it do
+// iterates the sequence the number of times given in passwordLength 
     for(var i =0; i < passwordLength; i++){
-      console.log(i);
+      
     }
 
   }
    else {
-    // FIXED: moved the recursion to the very end so everything is one big box and feels very awkward 
+    //  returns for another passwordPrompt for non-valid inputs 
     window.alert('please enter a value between 8 and 128');
     return (passwordPrompt);
-    //  END: passwordLength recursive loop
   }
 }
 

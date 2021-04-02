@@ -18,9 +18,6 @@ WHEN all prompts are answered\
 THEN a password is generated that matches the selected criteria\
 WHEN the password is generated
 
-# Grading Requirements
-This challenge is graded based on the following criteria:
-
 ## Technical Acceptance Criteria: 40%
 Satisfies all of the above acceptance criteria plus the following:
 

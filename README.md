@@ -18,7 +18,7 @@ WHEN all prompts are answered\
 THEN a password is generated that matches the selected criteria\
 WHEN the password is generated
 
-# Grading Requirements\
+# Grading Requirements
 This challenge is graded based on the following criteria:
 
 # Technical Acceptance Criteria: 40%
@@ -50,5 +50,5 @@ Repository follows best practices for class/id naming conventions, indentation, 
 
 ~Repository contains multiple descriptive commit messages.~
 
-Repository contains quality README file with description, screenshot, and link to deployed application.
+~Repository contains quality README file with description,~ !!screenshot, and link to deployed application.!!
 

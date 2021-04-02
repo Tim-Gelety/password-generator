@@ -42,7 +42,7 @@ Application user interface style is clean and polished.
 Application resembles the mock-up functionality provided in the Challenge instructions.
 
 # Repository Quality: 13%
-Repository has a unique name.
+~Repository has a unique name.~
 
 ~Repository follows best practices for file structure and naming conventions.~
 

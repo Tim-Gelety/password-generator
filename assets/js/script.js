@@ -1,15 +1,28 @@
 // Assignment code here
-// TODO: make a window prompt that ask for a numerical value between 8-128
-// TODO: make a confirm window that asks for special characters
-// TODO: make a confirm window that asks for numerical characters
-// TODO: make a confirm window that asks for lowercas charaters
-// TODO: make a confirm windo that asks for uppercase characters
+//TODO: 
+var passwordPrompt = function () {
+  // gets a value between 8-128 for variable passwordLength
+  var passwordLength = window.prompt('How long of a password should I generate? tip: choose a number between 8-128.');
 
-var passwordLength = window.prompt('How long of a password should I generate? tip: choose a number between 8-128.');
-var passwordSpecial = window.confirm('Would you like special characters in your password? tip: OK for Yes and CANCEL for NO');
-var passwordNumber = window.confirm('Would you like numerical characters in your password? tip: OK for Yes and CANCEL for NO');
-var passwordLowerCase = window.confirm('Would you like lowercase characters in your password? tip: OK for Yes and CANCEL for NO');
-var passwordUpperCase = window.confirm('Would you like UPPERCASE characters in your password? tip: OK for Yes and CANCEL for NO');
+  // START: if passwordLength is not a number between 8-128 recursive loop
+  if (passwordLength < 8 || passwordLength > 128) {
+
+    window.alert('please enter a value between 8 and 128');
+    return (passwordPrompt);
+    //  END: passwordLength recursive loop
+
+  } else {
+
+
+    //  rest of the code here 
+    var passwordSpecial = window.confirm('Would you like special characters in your password? tip: OK for Yes and CANCEL for NO');
+    var passwordNumber = window.confirm('Would you like numerical characters in your password? tip: OK for Yes and CANCEL for NO');
+    var passwordLowerCase = window.confirm('Would you like lowercase characters in your password? tip: OK for Yes and CANCEL for NO');
+    var passwordUpperCase = window.confirm('Would you like UPPERCASE characters in your password? tip: OK for Yes and CANCEL for NO');
+  }
+}
+passwordLength()
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");

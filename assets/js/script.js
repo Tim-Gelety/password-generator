@@ -13,14 +13,14 @@ var generatePassword = function () {
     //  buncha boolean codesoup
     var passwordSpecial = window.confirm('Would you like special characters in your password? tip: OK for Yes and CANCEL for NO');
     if(passwordSpecial === true) {
-      passwordSpecial = "!@#$%^*&(){}|\<>?/.,`~";
+      passwordSpecial = "!@#$%^*&(){}\<>?/.,~:;[]=+";
     } else {
       passwordSpecial = ""
     }
 
     var passwordNumber = window.confirm('Would you like numerical characters in your password? tip: OK for Yes and CANCEL for NO');
     if(passwordNumber === true) {
-      passwordNumber = "1234567890";
+      passwordNumber = "12345678901234567890123456";
     } else {
       passwordNumber = ""
     }
@@ -45,15 +45,17 @@ console.log(charSet);
 
 // TODO: make it do
 // iterates the sequence the number of times given in passwordLength 
-for(var i =0; i < passwordLength; i++){
-  var randomNumber = charSet.charAt(Math.floor(Math.random()* charSet.length))
-    }
-  
-    return(randomNumber);
+var password = ""
+for(var i = 0; i < passwordLength; i++ ){
+   password += charSet.charAt(Math.floor(Math.random()* charSet.length))
+// password iterates and replaces values until loop finishes, stop that 
+}
+  return(password)
+    
   } else {
-    //  returns for another passwordPrompt for non-valid inputs 
+    //  returns for another generatePassword for non-valid inputs 
     window.alert('please enter a value between 8 and 128');
-    return (passwordPrompt);
+    return (generatePassword);
   }
 }
 

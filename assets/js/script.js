@@ -1,63 +1,75 @@
-// Assignment code here
+// TODO: Fix the ruturn exception 
+// HINT: pull the callbacks out of the main function 
+// DESCRIBE: generatePassword's function
 var generatePassword = function () {
+  // DESCRIBE: gets a value between 8-128 for variable passwordLength
+  var passwordLength = window.prompt('How long of a password should I generate? tip: choose a whole number between 8-128.');
 
-  // gets a value between 8-128 for variable passwordLength
-  var passwordLength = window.prompt('How long of a password should I generate? tip: choose a number between 8-128.');
- 
-  // FIXED: stupid non-whole numbers exception
+  // DESCRIBE: keeping the value of passwordLength an interger to be valid
   var passwordLength = parseInt(passwordLength);
 
-  // FIXED: +1 edge case
+  // DESCRIBE: IF the values entered into passwordLength are between 8  and 128 then
   if (passwordLength > 7 && passwordLength < 129) {
 
-    //  buncha boolean codesoup
+    // NOTE: buncha' boolean soup
+    // DESCRIBE: boolean prompt for passwordSpecial. TRUE returns a string of 26 special characters FALSE returns a NULL value
     var passwordSpecial = window.confirm('Would you like special characters in your password? tip: OK for Yes and CANCEL for NO');
-    if(passwordSpecial === true) {
+    if (passwordSpecial === true) {
       passwordSpecial = "!@#$%^*&(){}\<>?/.,~:;[]=+";
     } else {
       passwordSpecial = ""
     }
-
+    // DESCRIBE: boolean prompt for passwordNumber. TRUE returns a string of 20 numbers FALSE returns a NULL value
+    // NOTE: the number values are repeated to give a more even distribution
     var passwordNumber = window.confirm('Would you like numerical characters in your password? tip: OK for Yes and CANCEL for NO');
-    if(passwordNumber === true) {
-      passwordNumber = "12345678901234567890123456";
+    if (passwordNumber === true) {
+      passwordNumber = "12345678901234567890";
     } else {
       passwordNumber = ""
     }
-
+    // DESCRIBE: boolean prompt for passwordLowerCase. TRUE returns a string of 26 characters FALSE returns a NULL value
     var passwordLowerCase = window.confirm('Would you like lowercase characters in your password? tip: OK for Yes and CANCEL for NO');
-    if(passwordLowerCase === true) {
+    if (passwordLowerCase === true) {
       passwordLowerCase = "abcdefghijklmnopqrstuvwxyz";
     } else {
       passwordLowerCase = ""
     }
-
+    // DESCRIBE: boolean prompt for passwordUpperCase. TRUE returns a string of 26 characters FALSE returns a NULL value
     var passwordUpperCase = window.confirm('Would you like UPPERCASE characters in your password? tip: OK for Yes and CANCEL for NO');
-    if(passwordUpperCase === true) {
+    if (passwordUpperCase === true) {
       passwordUpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     } else {
       passwordUpperCase = ""
     }
+    // DESCRIBE: charSet variable is then defined as a concatenation of all previous boolean variables TRUE and FALSE
+    var charSet = passwordSpecial + passwordNumber + passwordLowerCase + passwordUpperCase;
 
-  var charSet = passwordSpecial + passwordNumber + passwordLowerCase + passwordUpperCase;
+    // DESCRIBE: password variable defined outside of the for loop  
+    var testVariable = ""
+    // DESCRIBE: this  is a 'for loop' 
+    for (var i = 0; i < passwordLength; i++) {
+      // DESCRIBE: this part is tricky to explain, it chooses the characters randomly from the set then adds them to the password 
+      testVariable += charSet.charAt(Math.floor(Math.random() * charSet.length))
+    }
+    // DESCRIBE: if the length of the password variable and the passwordLength variable are equal, then
+    if (testVariable.length === passwordLength) {
 
-console.log(charSet);
-
-// TODO: make it do
-// iterates the sequence the number of times given in passwordLength 
-var password = ""
-for(var i = 0; i < passwordLength; i++ ){
-   password += charSet.charAt(Math.floor(Math.random()* charSet.length))
-// password iterates and replaces values until loop finishes, stop that 
-}
-  return(password)
-    
+      // DESCRIBE: return the newly minted password 
+      return (testVariable);
+      // DESCRIBE: otherwise go do it again
+    } else {
+      window.alert('ERROR: no variables given to generate')
+      generatePassword();
+    }
+    // DESCRIBE: if the value in passwordLength isn't a whole number between 8-128
   } else {
-    //  returns for another generatePassword for non-valid inputs 
-    window.alert('please enter a value between 8 and 128');
-    return (generatePassword);
+    // DESCRIBE:  returns for another generatePassword for non-valid inputs  
+    window.alert('please enter a whole number value between 8 and 128');
+    generatePassword();
   }
-}
+} // <-- this is where everything breaks
+// DEBUGGER: the recursive steps to bring the argument back totally work and everything is going great untill we leave the function
+// DEBUGGER: thats when the program reverts to the old incorrect value for whatever the first recursion went through
 
 
 // Get references to the #generate element
@@ -74,3 +86,4 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+

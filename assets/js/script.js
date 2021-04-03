@@ -1,7 +1,7 @@
-// TODO: Fix the ruturn exception 
-// HINT: pull the callbacks out of the main function 
+// TODO: Fix the return exception 
+// HINT: pull the recursive statements out of the main function 
 // DESCRIBE: generatePassword's function
-var generatePassword = function () {
+var generatePassword = function () { // <-- this line is tricky because its has to be this variable to work
   // DESCRIBE: gets a value between 8-128 for variable passwordLength
   var passwordLength = window.prompt('How long of a password should I generate? tip: choose a whole number between 8-128.');
 
@@ -45,20 +45,20 @@ var generatePassword = function () {
     var charSet = passwordSpecial + passwordNumber + passwordLowerCase + passwordUpperCase;
 
     // DESCRIBE: password variable defined outside of the for loop  
-    var testVariable = ""
+    var password = ""
     // DESCRIBE: this  is a 'for loop' 
     for (var i = 0; i < passwordLength; i++) {
       // DESCRIBE: this part is tricky to explain, it chooses the characters randomly from the set then adds them to the password 
-      testVariable += charSet.charAt(Math.floor(Math.random() * charSet.length))
+      password += charSet.charAt(Math.floor(Math.random() * charSet.length))
     }
     // DESCRIBE: if the length of the password variable and the passwordLength variable are equal, then
-    if (testVariable.length === passwordLength) {
+    if (password.length === passwordLength) {
 
       // DESCRIBE: return the newly minted password 
-      return (testVariable);
+      return (password);
       // DESCRIBE: otherwise go do it again
     } else {
-      window.alert('ERROR: no variables given to generate')
+      window.alert('ERROR: no variables given to generate');
       generatePassword();
     }
     // DESCRIBE: if the value in passwordLength isn't a whole number between 8-128
@@ -69,8 +69,7 @@ var generatePassword = function () {
   }
 } // <-- this is where everything breaks
 // DEBUGGER: the recursive steps to bring the argument back totally work and everything is going great untill we leave the function
-// DEBUGGER: thats when the program reverts to the old incorrect value for whatever the first recursion went through
-
+// DEBUGGER: thats when the program reverts to the old value for whatever the first error was
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");

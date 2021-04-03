@@ -1,12 +1,11 @@
-// TODO: Fix the return exception 
-// HINT: pull the recursive statements out of the main function 
-// DESCRIBE: generatePassword's function
+ 
+// DESCRIBE: generatePassword function runs the whole darn thing
 var generatePassword = function () { // <-- this line is tricky because its has to be this variable to work
   // DESCRIBE: gets a value between 8-128 for variable passwordLength
   var passwordLength = window.prompt('How long of a password should I generate? tip: choose a whole number between 8-128.');
 
   // DESCRIBE: keeping the value of passwordLength an interger to be valid
-  var passwordLength = parseInt(passwordLength);
+  passwordLength = parseInt(passwordLength);
 
   // DESCRIBE: IF the values entered into passwordLength are between 8  and 128 then
   if (passwordLength > 7 && passwordLength < 129) {
@@ -59,17 +58,15 @@ var generatePassword = function () { // <-- this line is tricky because its has 
       // DESCRIBE: otherwise go do it again
     } else {
       window.alert('ERROR: no variables given to generate');
-      generatePassword();
+      return (generatePassword()); // <---FIXED: added RETURN
     }
     // DESCRIBE: if the value in passwordLength isn't a whole number between 8-128
   } else {
     // DESCRIBE:  returns for another generatePassword for non-valid inputs  
     window.alert('please enter a whole number value between 8 and 128');
-    generatePassword();
+    return (generatePassword()); // <---FIXED: added RETURN 
   }
-} // <-- this is where everything breaks
-// DEBUGGER: the recursive steps to bring the argument back totally work and everything is going great untill we leave the function
-// DEBUGGER: thats when the program reverts to the old value for whatever the first error was
+}
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
